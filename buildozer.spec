@@ -10,13 +10,12 @@ requirements = python3,kivy==2.3.1,kivymd==1.1.1,pillow,gspread,oauth2client,goo
 orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = arm64-v8a,armeabi-v7a
 android.api = 33
 android.minapi = 21
 android.ndk = 25b
 android.sdk = 33
 android.accept_sdk_license = True
-android.gradle_dependencies = org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0
 p4a.branch = master
 p4a.bootstrap = sdl2
 android.presplash_color = #FFFFFF
@@ -26,15 +25,3 @@ log_level = 2
 warn_on_root = 1
 build_dir = ./.buildozer
 bin_dir = ./bin
-
-[app@demo]
-title = Quiz Python (demo)
-
-[app:source.exclude_patterns@demo]
-images/hd/*
-
-[buildozer@demo]
-log_level = 2
-warn_on_root = 1
-build_dir = ./.buildozer
-bin_dir = ./bin 
