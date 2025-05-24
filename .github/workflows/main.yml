@@ -46,7 +46,7 @@ jobs:
           automake \
           openjdk-17-jdk \
           zip unzip \
-          libncurses5 libncurses5-dev \
+          libncurses-dev \
           libstdc++6
 
     - name: Init Buildozer (if not exists)
@@ -63,3 +63,4 @@ jobs:
       with:
         name: app-debug
         path: bin/*.apk
+        if-no-files-found: error
