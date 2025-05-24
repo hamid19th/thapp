@@ -1,8 +1,7 @@
 name: Build APK
+
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
   workflow_dispatch:
 
@@ -11,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    - name: Set up Python
+    - name: Setup Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
@@ -28,7 +28,6 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y \
-          python3-pip \
           build-essential \
           git \
           python3-dev \
@@ -49,10 +48,13 @@ jobs:
 
     - name: Build APK
       run: |
+        buildozer init
         buildozer android debug
 
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      if: success()
+      uses: actions/upload-artifact@latest
       with:
         name: app-debug
         path: bin/*.apk
+        if-no-files-found: error
